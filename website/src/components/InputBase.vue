@@ -1,6 +1,6 @@
 <template>
 	<div class="border rounded-md flex items-center" @click="input.focus()">
-		<component :is="icon" class="h-6 w-6 mx-4"></component>
+		<component :is="icon" v-if="icon" class="h-6 w-6 mx-4"></component>
 		<input
 			ref="input"
 			:type="type"
@@ -29,7 +29,7 @@ defineProps({
 		default: 'text',
 	},
 	icon: {
-		required: true,
+		default: null,
 		type: Object,
 	},
 });

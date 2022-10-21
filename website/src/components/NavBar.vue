@@ -2,8 +2,8 @@
 	<div class="fixed flex flex-col top-0 w-screen bg-white z-10">
 		<div class="items-center flex gap-8 p-4">
 			<div class="flex gap-2">
-				<router-link to="/" class="flex items-center gap-2">
-					<img src="@/assets/logo.png" alt="logo" class="h-16" />
+				<router-link to="/" class="flex items-center gap-2 logo">
+					Stock Y
 				</router-link>
 			</div>
 			<InputBase :icon="MagnifyingGlassIcon" class="h-12 flex-grow" />
