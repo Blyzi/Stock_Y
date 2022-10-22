@@ -30,7 +30,7 @@ defineProps({
 	},
 	icon: {
 		default: null,
-		type: Object,
+		type: Function,
 	},
 });
 
