@@ -1,6 +1,6 @@
 <template>
 	<div class="w-screen">
-		<div class="flex flex-col justify-around bg-gray-400 text-white p-8">
+		<div class="flex flex-col justify-around bg-gray-800 text-white p-8">
 			<div class="flex text-3xl">StockY. Enter the Immediate.</div>
 			<div class="grid grid-flow-col text-white text-sm my-4 gap-20">
 				<div class="flex flex-col gap-2">
