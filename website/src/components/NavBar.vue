@@ -24,7 +24,7 @@
 							Login
 						</button>
 					</router-link>
-					<router-link to="/login">
+					<router-link to="/register">
 						<button class="bg-green-900 text-white px-4 py-2 rounded-md">
 							Sign Up
 						</button>
