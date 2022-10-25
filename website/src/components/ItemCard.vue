@@ -1,8 +1,8 @@
-<template></template>
+<template>
+	<div></div>
+</template>
 
 <script setup>
-import { defineProps } from 'vue';
-
 defineProps({
 	item: {
 		type: Object,

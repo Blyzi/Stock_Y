@@ -46,22 +46,27 @@
 
 				<div class="flex text-2xl font-bold">Our Gaming Brands</div>
 				<div class="flex flex-col gap-8">
-					<div
-						v-for="(brand, k) in gamingBrand"
-						:key="k"
-						class="flex items-center gap-8"
-					>
-						<img
-							:class="{ invisible: !brand.src }"
-							:src="brand.src"
-							class="w-36 h-36"
-						/>
-						<div class="flex flex-col gap-2">
-							<div class="text-xl underline">{{ brand.name }}</div>
-							<div class="">
-								{{ brand.description }}
+					<div v-for="(brand, i) in gamingBrands" :key="i">
+						<div
+							class="flex items-center gap-8"
+							:class="{ 'flex-row-reverse text-right': i % 2 === 1 }"
+						>
+							<div class="h-36 w-36 flex items-center justify-center">
+								<img
+									:class="{ invisible: !brand.src }"
+									:src="brand.src"
+									class="object-contain"
+								/>
+							</div>
+
+							<div class="flex flex-col gap-2">
+								<div class="text-2xl font-medium">{{ brand.name }}</div>
+								<div class="">
+									{{ brand.description }}
+								</div>
 							</div>
 						</div>
+						<hr class="mt-4 w-1/5 mx-auto" />
 					</div>
 				</div>
 			</div>
@@ -127,7 +132,7 @@ const clothesBrands = [
 	},
 ];
 
-const gamingBrand = [
+const gamingBrands = [
 	{
 		name: 'Ybox',
 		description: 'The StockY version of Xbox.',
