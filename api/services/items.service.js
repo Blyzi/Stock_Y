@@ -3,15 +3,16 @@ export default class ItemsService {
     this.database = database;
   }
 
-  createUser(req, res) {
-    const { name_brand, model, ref, price, quantity } = req.body;
+  createItem(req, res) {
+    const { brand_name, model, ref, price, quantity, gender } = req.body;
     this.database("items")
       .insert({
-        name_brand,
+        brand_name,
         model,
         ref,
         price,
         quantity,
+        gender,
       })
       .returning("id_item")
       .then((data) => {
@@ -25,7 +26,7 @@ export default class ItemsService {
     });
   }
 
-  getUserById(req, res) {
+  getItemById(req, res) {
     const id_item = parseInt(req.params.id);
     this.database("items")
       .where({ id_item })
@@ -34,17 +35,18 @@ export default class ItemsService {
       });
   }
 
-  updateUser(req, res) {
+  updateItem(req, res) {
     const id_item = parseInt(req.params.id);
-    const { name_brand, model, ref, price, quantity } = req.body;
+    const { brand_name, model, ref, price, quantity, gender } = req.body;
     this.database("items")
       .where({ id_item })
       .update({
-        name_brand,
+        brand_name,
         model,
         ref,
         price,
         quantity,
+        gender,
       })
       .returning("id_item")
       .then((data) => {
@@ -52,7 +54,7 @@ export default class ItemsService {
       });
   }
 
-  deleteUser(req, res) {
+  deleteItem(req, res) {
     const id_item = parseInt(req.params.id);
     this.database("items")
       .where({ id_item })

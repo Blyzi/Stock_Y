@@ -14,7 +14,6 @@ exports.up = function (knex) {
     })
     .createTable("items", (table) => {
       table.increments("id_item").primary;
-      table.string("name_brand", 50).notNullable.unique;
       table.string("model", 50).notNullable.unique;
       table.string("ref", 50).notNullable.unique;
       table.float("price").notNullable.unique;
@@ -24,7 +23,7 @@ exports.up = function (knex) {
     .table("items", function (table) {
       table
         .enu(
-          "brandName",
+          "brand_name",
           [
             "Ground Jordan",
             "Abibas",

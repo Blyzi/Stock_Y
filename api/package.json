@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "migrate": "npx knex migrate:latest --knexfile db/knexfile.cjs",
+    "migrate": "npx knex migrate:latest --knexfile knexfile.cjs",
     "dev": "node index.js",
     "start": "nodemon index.js",
     "pg": "^8.8.0"
