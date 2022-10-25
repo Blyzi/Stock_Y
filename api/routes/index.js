@@ -9,7 +9,9 @@ export const router = express.Router();
 
 // User endpoints
 
-router.post("/users", usersService.createUser.bind(usersService));
+router.post("/users", (req, res) => {
+  usersService.createUser(res, req);
+});
 
 router.get("/users", usersService.getUsers.bind(usersService));
 router.get("/users:id", usersService.getUserById.bind(usersService));
@@ -20,11 +22,11 @@ router.delete("/users:id", usersService.deleteUser.bind(usersService));
 
 // Item endpoints
 
-router.post("/items", itemsService.createItem.bind(itemsService));
+// router.post("/items", itemsService.createItem.bind(itemsService));
 
-router.get("/items", itemsService.getItems.bind(itemsService));
-router.get("/items:id", itemsService.getItemById.bind(itemsService));
+// router.get("/items", itemsService.getItems.bind(itemsService));
+// router.get("/items:id", itemsService.getItemById.bind(itemsService));
 
-router.patch("/items:id", itemsService.updateItem.bind(itemsService));
+// router.patch("/items:id", itemsService.updateItem.bind(itemsService));
 
-router.delete("/items:id", itemsService.deleteItem.bind(itemsService));
+// router.delete("/items:id", itemsService.deleteItem.bind(itemsService));
