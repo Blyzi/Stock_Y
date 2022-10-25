@@ -10,6 +10,7 @@
 			<InputBase :icon="MagnifyingGlassIcon" class="h-12 flex-grow" />
 			<div class="flex gap-8 items-center">
 				<div class="flex items-center gap-4">
+					<router-link to="/browse">Browse</router-link>
 					<router-link to="/about">About</router-link>
 					<RouterLink to="/sell">Sell</RouterLink>
 					<BellIcon class="h-6 w-6" />
@@ -32,13 +33,14 @@
 			</div>
 		</div>
 		<div class="flex items-center justify-center bg-gray-100 gap-4 p-2">
-			<div
+			<router-link
 				v-for="(item, id) in itemsList"
 				:key="id"
 				class="text-lg font-medium"
+				:to="item.link"
 			>
 				{{ item.name }}
-			</div>
+			</router-link>
 		</div>
 	</div>
 </template>
@@ -48,9 +50,9 @@ import { BellIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 import InputBase from './InputBase.vue';
 
 const itemsList = [
-	{ name: 'Shoes', link: '/shoes' },
-	{ name: 'Shirts', link: '/shirts' },
-	{ name: 'Sweat', link: '/sweats' },
-	{ name: 'Accessories', link: '/accessories' },
+	{ name: 'Shoes', link: '/browse/sneakers' },
+	{ name: 'Shirts', link: '/browse/clothes' },
+	{ name: 'Sweat', link: '/browse/clothes' },
+	{ name: 'Accessories', link: '/browse/accessories' },
 ];
 </script>

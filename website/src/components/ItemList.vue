@@ -10,7 +10,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import ItemCard from '@/components/ItemCard.vue';
 
 defineProps({

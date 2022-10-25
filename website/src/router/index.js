@@ -13,9 +13,12 @@ const routes = [
 		component: () => import('@/views/AboutPage.vue'),
 	},
 	{
-		path: '/contact',
-		name: 'Contact',
-		component: () => import('@/views/ContactPage.vue'),
+		path: '/browse/:type',
+		component: () => import('@/views/BrowsePage.vue'),
+	},
+	{
+		path: '/browse',
+		component: () => import('@/views/BrowsePage.vue'),
 	},
 	{
 		path: '/login',
