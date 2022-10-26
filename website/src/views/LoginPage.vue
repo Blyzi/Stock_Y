@@ -15,6 +15,7 @@
 					class="w-96 p-4"
 					type="password"
 				/>
+				<div class="text-sm text-red-500">{{ msg }}</div>
 			</div>
 
 			<button
@@ -35,7 +36,29 @@
 <script setup>
 import InputBase from '@/components/InputBase.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useUsersStore } from '../stores/users.store';
 
 const email = ref('');
 const password = ref('');
+const msg = ref('');
+
+const router = useRouter();
+const usersStore = useUsersStore();
+
+const login = async () => {
+	msg.value = '';
+	if (
+		(
+			await usersStore.login({
+				email: email.value,
+				password: password.value,
+			})
+		).status === 200
+	) {
+		router.push('/');
+	} else {
+		msg.value = 'Invalid email or password';
+	}
+};
 </script>
