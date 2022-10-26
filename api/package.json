@@ -1,6 +1,7 @@
 {
   "scripts": {
     "migrate": "npx knex migrate:latest --knexfile knexfile.cjs",
+    "seed": "npx knex seed:run --knexfile knexfile.cjs",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },

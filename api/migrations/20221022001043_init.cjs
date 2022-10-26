@@ -15,9 +15,8 @@ exports.up = function (knex) {
     })
     .createTable("items", (table) => {
       table.increments("id_item").primary;
-      table.string("model", 50).notNullable.unique;
-      table.string("ref", 50).notNullable.unique;
-      table.string("image", 500).unique;
+      table.string("model", 50).notNullable().unique();
+      table.string("ref", 50).notNullable().unique();
       table.timestamp("created_at").defaultTo(knex.fn.now());
     })
     .table("items", function (table) {
