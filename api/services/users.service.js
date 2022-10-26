@@ -7,13 +7,11 @@ export default class UsersService {
 
   async login(user) {
     const { email, password } = user;
-    const userFound = _.omit(
-      await this.database("users").where({ email }).first().returning("*"),
-      "password"
-    );
+    const userFound = await this.database("users").where({ email }).first();
     if (!userFound) {
       throw new Error("User not found");
     }
+
     const isPasswordCorrect = await bcryptjs.compare(
       password,
       userFound.password
@@ -21,7 +19,7 @@ export default class UsersService {
     if (!isPasswordCorrect) {
       throw new Error("Password is incorrect");
     }
-    return userFound;
+    return _.omit(userFound, "password");
   }
 
   async createUser(user) {
