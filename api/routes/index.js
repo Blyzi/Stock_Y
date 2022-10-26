@@ -1,5 +1,5 @@
 import express from "express";
-import { database } from "../db/database.js";
+import { database } from "../db/index.js";
 
 import UsersService from "../services/users.service.js";
 import ItemsService from "../services/items.service.js";
