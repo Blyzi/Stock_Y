@@ -5,10 +5,10 @@ exports.up = function (knex) {
       table.integer("quantity").notNullable;
       table.float("price").notNullable;
       table.timestamp("created_at").defaultTo(knex.fn.now());
-      table.integer("model").notNullable;
+      table.integer("id_item").notNullable;
       table.integer("seller").notNullable;
       table.integer("buyer").notNullable;
-      table.foreign("model").references("id_item").inTable("items");
+      table.foreign("id_item").references("id_item").inTable("items");
       table.foreign("seller").references("id_user").inTable("users");
       table.foreign("buyer").references("id_user").inTable("users");
     })
