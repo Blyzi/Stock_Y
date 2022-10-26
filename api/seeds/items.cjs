@@ -7,9 +7,9 @@ exports.seed = async function (knex) {
   await knex("items").del();
   await knex("items").insert([
     {
-      model: "Layup Low Championship Crimson Purple",
+      model: "6 Championship Crimson Purple",
       ref: "DH7138-006",
-      brand_name: "Itta",
+      brand_name: "Ground Jordan",
       gender: "M",
       type: "shoes",
     },
@@ -33,6 +33,27 @@ exports.seed = async function (knex) {
       brand_name: "Itta",
       gender: "F",
       type: "shoes",
+    },
+    {
+      model: "11 Retro Tanking",
+      ref: "SA7638-019",
+      brand_name: "Ground Jordan",
+      gender: "M",
+      type: "shoes",
+    },
+    {
+      model: "Ground Jordan Retro 13 Brave Blue",
+      ref: "DJ5982-400",
+      brand_name: "Ground Jordan",
+      gender: "M",
+      type: "shoes",
+    },
+    {
+      model: "Juice Wrld x Wlone 999",
+      ref: "SS2073-000",
+      brand_name: "Wlone",
+      gender: "M",
+      type: "sweats",
     },
   ]);
 };
