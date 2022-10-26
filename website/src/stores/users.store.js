@@ -1,18 +1,27 @@
 import { defineStore } from 'pinia';
 import { $axios } from '../utils/axios';
 
-export const useUsersStore = defineStore({
+export const useUsersStore = defineStore('users', {
 	state: () => ({
-		users: null,
+		user: null,
 	}),
 	actions: {
-		async login({ email, password }) {
-			const { data } = await $axios.post('/login', { email, password });
-			return data;
+		async login(loginData) {
+			return await $axios
+				.post('/users/login', loginData)
+				.then((response) => {
+					this.user = response.data;
+					return response;
+				})
+				.catch((err) => {
+					return err.response;
+				});
 		},
-		async register({ email, password }) {
-			const { data } = await $axios.post('/register', { email, password });
-			return data;
+		async register(user) {
+			const req = await $axios.post('/users', user).catch((err) => {
+				return err.response;
+			});
+			return req;
 		},
 	},
 });

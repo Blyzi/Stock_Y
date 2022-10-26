@@ -17,18 +17,28 @@
 				</div>
 
 				<div class="flex items-center gap-2">
-					<router-link to="/login">
+					<router-link v-if="usersStore.user === null" to="/login">
 						<button
 							class="border-green-900 text-green-900 px-4 py-2 rounded-md border"
 						>
 							Login
 						</button>
 					</router-link>
-					<router-link to="/register">
+					<router-link v-if="usersStore.user === null" to="/register">
 						<button class="bg-green-900 text-white px-4 py-2 rounded-md">
 							Sign Up
 						</button>
 					</router-link>
+					<div v-if="usersStore.user !== null">
+						Hi, {{ usersStore.user?.firstname }}
+					</div>
+					<button
+						v-if="usersStore.user !== null"
+						class="bg-green-900 text-white px-4 py-2 rounded-md"
+						@click="usersStore.user = null"
+					>
+						Log out
+					</button>
 				</div>
 			</div>
 		</div>
@@ -48,6 +58,9 @@
 <script setup>
 import { BellIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 import InputBase from './InputBase.vue';
+import { useUsersStore } from '../stores/users.store';
+
+const usersStore = useUsersStore();
 
 const itemsList = [
 	{ name: 'Shoes', link: '/browse/sneakers' },

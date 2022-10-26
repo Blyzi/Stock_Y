@@ -11,6 +11,12 @@ const stocksService = new StocksService(database);
 
 export const router = express.Router();
 
+// Base route
+
+router.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 // User endpoints
 
 router.get("/users", async (request, response) => {
@@ -23,7 +29,7 @@ router.get("/users/:id", async (request, response) => {
 
 router.post("/users", async (request, response) => {
   try {
-    response.status(201).send(...(await usersService.createUser(request.body)));
+    response.status(201).send(await usersService.createUser(request.body));
   } catch (error) {
     response.status(400).send(error.message);
   }

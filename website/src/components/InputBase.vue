@@ -4,10 +4,12 @@
 		<input
 			ref="input"
 			:type="type"
-			class="h-full flex-grow outline-none"
+			class="h-full w-full flex-grow outline-none"
 			:placeholder="placeholder"
-			:value="value"
-			@input="$emit('update:value', $event.target.value)"
+			:value="modelValue"
+			:required="required"
+			:pattern="pattern"
+			@input="$emit('update:modelValue', $event.target.value)"
 		/>
 	</div>
 </template>
@@ -20,7 +22,7 @@ defineProps({
 		type: String,
 		default: 'Search something...',
 	},
-	value: {
+	modelValue: {
 		type: String,
 		default: '',
 	},
@@ -32,9 +34,17 @@ defineProps({
 		default: null,
 		type: Function,
 	},
+	required: {
+		type: Boolean,
+		default: false,
+	},
+	pattern: {
+		type: String,
+		default: null,
+	},
 });
 
-defineEmits(['update:value']);
+defineEmits(['update:modelValue']);
 
 const input = ref(null);
 </script>
