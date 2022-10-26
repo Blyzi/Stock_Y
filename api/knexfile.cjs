@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-console.log(process.env.API_PORT);
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
@@ -19,6 +18,7 @@ module.exports = {
     },
     migrations: {
       tableName: "knex_migrations",
+      directory: "./migrations",
     },
   },
 };

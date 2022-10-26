@@ -1,66 +1,20 @@
-export default class ItemsService {
+export default class itemsService {
   constructor(database) {
     this.database = database;
   }
-
-  createItem(req, res) {
-    const { brand_name, model, ref, price, quantity, gender } = req.body;
-    this.database("items")
-      .insert({
-        brand_name,
-        model,
-        ref,
-        price,
-        quantity,
-        gender,
-      })
-      .returning("id_item")
-      .then((data) => {
-        res.json(data);
-      });
+  async createItem(item) {
+    return this.database("items").insert(item).returning("*");
   }
-
-  getItems(req, res) {
-    this.database("items").then((data) => {
-      res.json(data);
-    });
+  async getItems() {
+    return this.database("items").select("*");
   }
-
-  getItemById(req, res) {
-    const id_item = parseInt(req.params.id);
-    this.database("items")
-      .where({ id_item })
-      .then((data) => {
-        res.json(data);
-      });
+  async getItemById(id) {
+    return this.database("items").select("*").where({ id }).first();
   }
-
-  updateItem(req, res) {
-    const id_item = parseInt(req.params.id);
-    const { brand_name, model, ref, price, quantity, gender } = req.body;
-    this.database("items")
-      .where({ id_item })
-      .update({
-        brand_name,
-        model,
-        ref,
-        price,
-        quantity,
-        gender,
-      })
-      .returning("id_item")
-      .then((data) => {
-        res.json(data);
-      });
+  async updateItem(id, item) {
+    return this.database("items").where({ id }).update(item).returning("*");
   }
-
-  deleteItem(req, res) {
-    const id_item = parseInt(req.params.id);
-    this.database("items")
-      .where({ id_item })
-      .del()
-      .then((data) => {
-        res.json(data);
-      });
+  async deleteItem(id) {
+    return this.database("items").where({ id }).del().returning("*");
   }
 }

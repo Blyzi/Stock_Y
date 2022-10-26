@@ -3,69 +3,115 @@ import { database } from "../db/database.js";
 
 import UsersService from "../services/users.service.js";
 import ItemsService from "../services/items.service.js";
-import ShoesService from "../services/shoes.service.js";
-import SweatsService from "../services/sweats.service.js";
-import TShirtsService from "../services/tShirts.service.js";
+import StocksService from "../services/stocks.service.js";
 
 const usersService = new UsersService(database);
 const itemsService = new ItemsService(database);
-const shoesService = new ShoesService(database);
-const sweatsService = new SweatsService(database);
-const tShirtsService = new TShirtsService(database);
+const stocksService = new StocksService(database);
 
 export const router = express.Router();
 
 // User endpoints
 
-router.post("/users", usersService.createUser.bind(usersService));
+router.get("/users", async (request, response) => {
+  response.status(200).send(await usersService.getUsers());
+});
 
-router.get("/users", usersService.getUsers.bind(usersService));
-router.get("/users:id", usersService.getUserById.bind(usersService));
+router.get("/users/:id", async (request, response) => {
+  response.status(200).send(await usersService.getUserById(request.params.id));
+});
 
-router.patch("/users:id", usersService.updateUser.bind(usersService));
+router.post("/users", async (request, response) => {
+  try {
+    response.status(201).send(...(await usersService.createUser(request.body)));
+  } catch (error) {
+    response.status(400).send(error.message);
+  }
+});
 
-router.delete("/users:id", usersService.deleteUser.bind(usersService));
+router.patch("/users/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(...(await usersService.updateUser(request.params.id, request.body)));
+});
+
+router.delete("/users/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(...(await usersService.deleteUser(request.params.id)));
+});
+
+router.post("/users/login", async (request, response) => {
+  try {
+    const user = await usersService.login(request.body);
+    response.status(200).send(user);
+  } catch (error) {
+    response.status(401).send(error.message);
+  }
+});
 
 // Item endpoints
 
-router.post("/items", itemsService.createItem.bind(itemsService));
+router.get("/items", async (request, response) => {
+  response.status(200).send(await itemsService.getItems());
+});
 
-router.get("/items", itemsService.getItems.bind(itemsService));
-router.get("/items:id", itemsService.getItemById.bind(itemsService));
+router.get("/items/:id", async (request, response) => {
+  response.status(200).send(await itemsService.getItemById(request.params.id));
+});
 
-router.patch("/items:id", itemsService.updateItem.bind(itemsService));
+router.post("/items", async (request, response) => {
+  try {
+    response.status(201).send(...(await itemsService.createItem(request.body)));
+  } catch (error) {
+    response.status(400).send(error.message);
+  }
+});
 
-router.delete("/items:id", itemsService.deleteItem.bind(itemsService));
+router.patch("/items/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(...(await itemsService.updateItem(request.params.id, request.body)));
+});
 
-// Shoe endpoints
+router.delete("/items/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(...(await itemsService.deleteItem(request.params.id)));
+});
 
-router.post("/shoes", shoesService.createShoe.bind(shoesService));
+// Stock endpoints
 
-router.get("/shoes", shoesService.getShoes.bind(shoesService));
-router.get("/shoes:id", shoesService.getShoeById.bind(shoesService));
+router.get("/stocks", async (request, response) => {
+  response.status(200).send(await stocksService.getStocks());
+});
 
-router.patch("/shoes:id", shoesService.updateShoe.bind(shoesService));
+router.get("/stocks/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(await stocksService.getStockById(request.params.id));
+});
 
-router.delete("/shoes:id", shoesService.deleteShoe.bind(shoesService));
+router.post("/stocks", async (request, response) => {
+  try {
+    response
+      .status(201)
+      .send(...(await stocksService.createStock(request.body)));
+  } catch (error) {
+    response.status(400).send(error.message);
+  }
+});
 
-// Sweat endpoints
+router.patch("/stocks/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(
+      ...(await stocksService.updateStock(request.params.id, request.body))
+    );
+});
 
-router.post("/sweats", sweatsService.createSweat.bind(sweatsService));
-
-router.get("/sweats", sweatsService.getSweats.bind(sweatsService));
-router.get("/sweats:id", sweatsService.getSweatById.bind(sweatsService));
-
-router.patch("/sweats:id", sweatsService.updateSweat.bind(sweatsService));
-
-router.delete("/sweats:id", sweatsService.deleteSweat.bind(sweatsService));
-
-// TShirts endpoints
-
-router.post("/tShirts", tShirtsService.createTShirt.bind(tShirtsService));
-
-router.get("/tShirts", tShirtsService.getTShirts.bind(tShirtsService));
-router.get("/tShirts:id", tShirtsService.getTShirtById.bind(tShirtsService));
-
-router.patch("/tShirts:id", tShirtsService.updateTShirt.bind(tShirtsService));
-
-router.delete("/tShirts:id", tShirtsService.deleteTShirt.bind(tShirtsService));
+router.delete("/stocks/:id", async (request, response) => {
+  response
+    .status(200)
+    .send(...(await stocksService.deleteStock(request.params.id)));
+});

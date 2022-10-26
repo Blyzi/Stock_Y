@@ -1,14 +1,15 @@
 {
   "scripts": {
     "migrate": "npx knex migrate:latest --knexfile knexfile.cjs",
-    "dev": "node index.js",
-    "start": "nodemon index.js",
-    "pg": "^8.8.0"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "knex": "^2.3.0",
+    "lodash": "^4.17.21",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0"
   },
