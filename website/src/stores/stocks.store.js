@@ -19,7 +19,7 @@ export const useStocksStore = defineStore('stocks', {
 			return data;
 		},
 		async updateStock(id, stock) {
-			const { data } = await $axios.put(`/stocks/${id}`, stock);
+			const { data } = await $axios.patch(`/stocks/${id}`, stock);
 			return data;
 		},
 		async deleteStock(id) {
