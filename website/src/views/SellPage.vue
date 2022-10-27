@@ -65,9 +65,28 @@
 						</div>
 					</div>
 					<div class="flex flex-col gap-4">
-						<input type="number" />
+						<div class="flex items-center gap-2">
+							Price:
+							<InputBase
+								v-model="price"
+								class="p-2"
+								type="number grow"
+								placeholder=""
+							/>$
+						</div>
+						<div class="flex items-center gap-2">
+							Quantity:
+							<InputBase
+								v-model="quantity"
+								class="p-2"
+								type="number grow"
+								placeholder=""
+							/>
+						</div>
+
 						<button
 							class="bg-green-900 rounded-md text-white font-semibold w-full p-2"
+							@click="sell"
 						>
 							Sell
 						</button>
@@ -86,6 +105,7 @@ import { useUsersStore } from '../stores/users.store';
 import { onMounted, ref, computed } from 'vue';
 import BoxSelector from '../components/BoxSelector.vue';
 import { useRouter } from 'vue-router';
+import InputBase from '../components/InputBase.vue';
 
 const itemsStore = useItemsStore();
 const stocksStore = useStocksStore();
@@ -95,6 +115,8 @@ const router = useRouter();
 const url = import.meta.env.VITE_API_URL;
 const selectedModel = ref('');
 const selectedSize = ref('');
+const price = ref('');
+const quantity = ref('');
 
 if (!usersStore.user) {
 	router.push('/login');
@@ -103,6 +125,17 @@ if (!usersStore.user) {
 const selectedObject = computed(() => {
 	return itemsStore.items.find((el) => el.model === selectedModel.value);
 });
+
+const sell = () => {
+	stocksStore.createStock({
+		id_item: selectedObject.value.id_item,
+		size: selectedSize.value,
+		seller: usersStore.user.id_user,
+		quantity: quantity.value,
+		price: price.value,
+	});
+	router.push('/browse');
+};
 
 onMounted(async () => {
 	await itemsStore.getItems();
