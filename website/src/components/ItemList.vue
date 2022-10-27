@@ -1,9 +1,11 @@
 <template>
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col gap-2 w-full">
 		<div class="font-semibold">
 			<slot name="title" />
 		</div>
-		<div class="flex gap-2">
+		<div
+			class="grid grid-rows-1 auto-cols-min grid-flow-col-dense gap-4 overflow-y-auto"
+		>
 			<ItemCard v-for="(item, i) in itemList" :key="i" :item="item" />
 		</div>
 	</div>

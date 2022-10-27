@@ -63,9 +63,9 @@ import { useUsersStore } from '../stores/users.store';
 const usersStore = useUsersStore();
 
 const itemsList = [
-	{ name: 'Shoes', link: '/browse/sneakers' },
-	{ name: 'Shirts', link: '/browse/clothes' },
-	{ name: 'Sweat', link: '/browse/clothes' },
+	{ name: 'Shoes', link: '/browse/shoes' },
+	{ name: 'Shirts', link: '/browse/tshirt' },
+	{ name: 'Sweats', link: '/browse/sweat' },
 	{ name: 'Accessories', link: '/browse/accessories' },
 ];
 </script>

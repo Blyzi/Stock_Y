@@ -22,11 +22,18 @@
 					{{ link.name }}
 				</router-link>
 			</div>
-			<div class="flex flex-col gap-4">
+			<div class="flex flex-col gap-4 grow">
 				<div class="flex flex-row-reverse">
 					<InputBase class="py-2 pr-2" :icon="MagnifyingGlassIcon" />
 				</div>
-				<div></div>
+				<div class="flex flex-row-reverse flex-wrap gap-4">
+					<ItemCard
+						v-for="(item, i) in itemsStore.getItemsByType(type)"
+						:key="i"
+						:item="item"
+					/>
+					{{ itemsStore.getItemsByType(type) }}
+				</div>
 			</div>
 		</div>
 	</LayoutBase>
@@ -36,19 +43,38 @@
 import LayoutBase from '@/components/LayoutBase.vue';
 import InputBase from '@/components/InputBase.vue';
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import ItemCard from '../components/ItemCard.vue';
+import { useItemsStore } from '@/stores/items.store';
+import { useRoute } from 'vue-router';
+import { computed } from 'vue';
+
+const itemsStore = useItemsStore();
+const route = useRoute();
+
+itemsStore.getAvailableItems();
+
+const type = computed(() => {
+	return typeof route.params.type !== 'undefined' ? route.params.type : 'all';
+});
 
 const category = {
-	sneakers: {
+	shoes: {
 		name: 'Sneakers',
-		link: '/browse/sneakers',
+		link: '/browse/shoes',
 		description:
 			'Every sneaker you want is always available and verified by StockY. Buy and sell new sneakers & shoes from Ground Jordan, adadas, Itta, Yard and more!',
 	},
-	clothes: {
-		name: 'Clothes',
-		link: '/browse/clothes',
+	sweat: {
+		name: 'Sweats',
+		link: '/browse/sweat',
 		description:
 			'Supreme, OFF-WHITE, Fear of God, Travis Scott, BAPE, & more. Buy & sell streetwear right here on StockY.',
+	},
+	tshirt: {
+		name: 'T-Shirts',
+		link: '/browse/tshirt',
+		description:
+			'Buy and sell new sneakers & shoes from Ground Jordan, adadas, Itta, Yard and more!',
 	},
 	accessories: {
 		name: 'Accessories',

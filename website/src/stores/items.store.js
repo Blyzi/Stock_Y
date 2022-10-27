@@ -3,11 +3,15 @@ import { defineStore } from 'pinia';
 
 export const useItemsStore = defineStore('items', {
 	state: () => ({
-		items: null,
+		items: [],
 	}),
 	actions: {
 		async getItems() {
 			const { data } = await $axios.get('/items');
+			this.items = data;
+		},
+		async getAvailableItems() {
+			const { data } = await $axios.get('/items/available');
 			this.items = data;
 		},
 		async getItem(id) {
@@ -25,6 +29,16 @@ export const useItemsStore = defineStore('items', {
 		async deleteItem(id) {
 			const { data } = await $axios.delete(`/items/${id}`);
 			return data;
+		},
+	},
+	getters: {
+		getItemsByType: (state) => {
+			return (type) => {
+				if (type === 'all') {
+					return state.items;
+				}
+				return state.items.filter((item) => item.type === type);
+			};
 		},
 	},
 });

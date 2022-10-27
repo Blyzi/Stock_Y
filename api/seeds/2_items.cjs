@@ -53,21 +53,21 @@ exports.seed = async function (knex) {
       ref: "SS2073-000",
       brand_name: "Wlone",
       gender: "F",
-      type: "tShirt",
+      type: "tshirt",
     },
     {
       model: "Ralph Steadman Icon",
       ref: "QR0283-750",
       brand_name: "Infime",
       gender: "M",
-      type: "tShirt",
+      type: "tshirt",
     },
     {
       model: "Fire Logo",
       ref: "FK9372-482",
       brand_name: "Itta",
       gender: "M",
-      type: "tShirt",
+      type: "tshirt",
     },
     {
       model: "Black Dragon",
@@ -81,7 +81,7 @@ exports.seed = async function (knex) {
       ref: "SW9514-152",
       brand_name: "Abibas",
       gender: "M",
-      type: "tShirt",
+      type: "tshirt",
     },
     {
       model: "Manu 51",
@@ -186,7 +186,7 @@ exports.seed = async function (knex) {
       ref: "JD7951-748",
       brand_name: "Manuel Vans",
       gender: "M",
-      type: "tShirt",
+      type: "tshirt",
     },
   ]);
 };

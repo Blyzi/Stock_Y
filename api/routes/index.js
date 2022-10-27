@@ -62,6 +62,10 @@ router.get("/items", async (request, response) => {
   response.status(200).send(await itemsService.getItems());
 });
 
+router.get("/items/available", async (request, response) => {
+  response.status(200).send(await itemsService.getAvailableItems());
+});
+
 router.get("/items/:id", async (request, response) => {
   response.status(200).send(await itemsService.getItemById(request.params.id));
 });

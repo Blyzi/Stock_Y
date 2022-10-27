@@ -35,6 +35,11 @@ const routes = [
 		name: 'Sell',
 		component: () => import('@/views/SellPage.vue'),
 	},
+	{
+		path: '/buy/:id',
+		name: 'Buy',
+		component: () => import('@/views/BuyPage.vue'),
+	},
 ];
 
 export default createRouter({
