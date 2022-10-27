@@ -3,7 +3,7 @@
 		<div
 			v-for="(choice, i) in choices"
 			:key="i"
-			class="w-10 py-1 border"
+			class="px-4 py-1 border"
 			:class="{
 				'border-gray-300': modelValue !== choice,
 				'border-green-500 bg-green-100 ': modelValue === choice,

@@ -3,7 +3,7 @@ import { $axios } from '../utils/axios';
 
 export const useStocksStore = defineStore('stocks', {
 	state: () => ({
-		stocks: null,
+		stocks: [],
 	}),
 	actions: {
 		async getStocks() {

@@ -32,7 +32,6 @@
 						:key="i"
 						:item="item"
 					/>
-					{{ itemsStore.getItemsByType(type) }}
 				</div>
 			</div>
 		</div>
