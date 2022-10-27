@@ -170,14 +170,14 @@ exports.seed = async function (knex) {
     {
       model: "Cubic Collection M1",
       ref: "PO1378-014",
-      brand_name: "Itte",
+      brand_name: "Itta",
       gender: "M",
       type: "sweat",
     },
     {
       model: "Cubic Collection F6",
       ref: "GA1789-014",
-      brand_name: "Itte",
+      brand_name: "Itta",
       gender: "F",
       type: "sweat",
     },

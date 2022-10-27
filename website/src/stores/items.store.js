@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 export const useItemsStore = defineStore('items', {
 	state: () => ({
 		items: [],
+		item: [],
 	}),
 	actions: {
 		async getItems() {
@@ -14,9 +15,13 @@ export const useItemsStore = defineStore('items', {
 			const { data } = await $axios.get('/items/available');
 			this.items = data;
 		},
+		async getAvailableItem(id) {
+			const { data } = await $axios.get(`/items/available/${id}`);
+			this.item = data;
+		},
 		async getItem(id) {
 			const { data } = await $axios.get(`/items/${id}`);
-			return data;
+			this.item = data;
 		},
 		async createItem(item) {
 			const { data } = await $axios.post('/items', item);

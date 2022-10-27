@@ -26,4 +26,17 @@ export default class itemsService {
       .select("items.*", "stocks.price", "stocks.quantity")
       .distinctOn("items.id_item");
   }
+  async getAvailableItemsById(id_item) {
+    return this.database("items")
+      .innerJoin("stocks", "items.id_item", "stocks.id_item")
+      .select(
+        "items.*",
+        "stocks.price",
+        "stocks.quantity",
+        "stocks.size",
+        "stocks.id_stock"
+      )
+      .where({ "items.id_item": id_item })
+      .orderBy("stocks.price", "asc");
+  }
 }
