@@ -52,8 +52,29 @@ exports.seed = async function (knex) {
       model: "Juice Wrld x Wlone 999",
       ref: "SS2073-000",
       brand_name: "Wlone",
+      gender: "F",
+      type: "tShirt",
+    },
+    {
+      model: "Ralph Steadman Icon",
+      ref: "QR0283-750",
+      brand_name: "Infime",
       gender: "M",
-      type: "sweats",
+      type: "tShirt",
+    },
+    {
+      model: "Fire Logo",
+      ref: "FK93729-482",
+      brand_name: "Infime",
+      gender: "M",
+      type: "tShirt",
+    },
+    {
+      model: "Fire Logo",
+      ref: "FK93729-482",
+      brand_name: "Itta",
+      gender: "M",
+      type: "tShirt",
     },
   ]);
 };

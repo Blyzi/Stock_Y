@@ -49,7 +49,7 @@ exports.up = function (knex) {
     })
     .table("items", function (table) {
       table
-        .enu("type", ["shoes", "tshirt", "sweat", "accessories"], {
+        .enu("type", ["shoes", "tShirt", "sweat", "accessories"], {
           useNative: true,
           enumName: "itemType",
         })
