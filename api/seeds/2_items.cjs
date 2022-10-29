@@ -265,5 +265,68 @@ exports.seed = async function (knex) {
       gender: "M",
       type: "sweat",
     },
+    {
+      model: "Hyper Cap",
+      ref: "GQ1163-575",
+      brand_name: "Abibas",
+      gender: "M",
+      type: "accessories"
+    },
+    {
+      model: "Manuel Vans X Supprime Beanie",
+      ref: "SP5624-254",
+      brand_name: "Manuel Vans",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "Classics Cap",
+      ref: "AD5432-754",
+      brand_name: "Abibas",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "Caps Lock",
+      ref: "NK3452-674",
+      brand_name: "Itte",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "Classics Body Bag",
+      ref: "BQ4537-654",
+      brand_name: "Abibas",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "Hyper Body Bag",
+      ref: "WB5876-346",
+      brand_name: "Abibas",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "Fire Fade Body Bag 2019",
+      ref: "FR3458-926",
+      brand_name: "Abibas",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "White Shopping Bag w/ logo",
+      ref: "NK6583-480",
+      brand_name: "Itte",
+      gender: "M",
+      type: "accessories",
+    },
+    {
+      model: "City Shopping Bag (Limited Edition 2022)",
+      ref: "CT1580-849",
+      brand_name: "Itte",
+      gender: "M",
+      type: "accessories",
+    },
   ]);
 };
