@@ -21,5 +21,5 @@ In the website folder:
 npm i
 npm run dev
 ```
-Now, you sould be good\Markdown Live Preview
+Now, you sould be good\
 If you have any problem, verify all yours environments variables in the website and api folders or contact us.
