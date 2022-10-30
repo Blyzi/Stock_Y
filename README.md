@@ -1,8 +1,25 @@
-# USA_WebProject
+# Stock Y
+---
+## Guide to run the project
 
-## How to run the project
-	1. create a database called "stocky" in postgres
-	2. copy the .env.exemple file in the api folder, modify it with your own session informations on postgres and save it as ".env"
-	3. run the command "npm run migrate" in the api folder
-	4. run the command "npm run seed" in the api folder
-	5. run the command "npm run dev" in the website folder and in the api folder
+Make sure to have a postgres database named stocky.
+
+### Setup
+
+- Go to the api folder
+- Copy the .env.exemple and rename it to .env with your computer parmeters
+
+In the api folder, execute these commands:
+```
+npm i
+npm run migrate
+npm run seed
+npm run dev
+```
+In the website folder:
+```
+npm i
+npm run dev
+```
+Now, you sould be good\Markdown Live Preview
+If you have any problem, verify all yours environments variables in the website and api folders or contact us.
